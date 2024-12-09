@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Countdown to Special Day</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle, #1e3c72, #2a5298);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .glass-container {
+      backdrop-filter: blur(15px);
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 40px;
+      padding-bottom: 30px;
+      text-align: center;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .countdown {
+      font-size: 3rem;
+      font-weight: bold;
+      letter-spacing: 3px;
+      margin: 20px 0;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .spotify-player {
+      margin: 30px 0;
+    }
+
+    .spotify-text {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      font-style: italic;
+    }
+
+    .photo-container img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 20px 0;
+      border: 3px solid rgba(255, 255, 255, 0.5);
+    }
+
+    select {
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 1rem;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    select option {
+      background: #2a5298;
+      color: #fff;
+    }
+
+    .footer {
+        position: relative; /* Mengubah dari absolute menjadi relative */
+        margin-top: 30px; /* Tambahkan jarak di atas footer */
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.8);
+        text-align: center;
+        padding: 10px;
+    }
+
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glass-container">
+    <h1>Santai, hari spesialmu sebentar lagi...</h1>
+    <div id="countdown" class="countdown">Loading...</div>
+
+    <!-- Foto di tengah -->
+    <div class="photo-container">
+      <img src="foto_ayang.jpg" alt="Foto Spesial">
+    </div>
+
+    <!-- Teks tambahan -->
+    <p class="spotify-text">Sambil menunggu, yuk play lagu favoritmu!</p>
+    
+    <!-- Spotify Player -->
+    <div class="spotify-player">
+      <iframe id="spotifyFrame" 
+        src="https://open.spotify.com/embed/track/7ouMYWpwJ422jRcDASZB7P" 
+        width="300" height="80" frameborder="0" 
+        allowtransparency="true" allow="encrypted-media">
+      </iframe>
+    </div>
+
+    <!-- Music Selector -->
+    <select id="musicSelector" onchange="changeMusic()">
+      <option value="7ouMYWpwJ422jRcDASZB7P">Musik 1 - Example Song 1</option>
+      <option value="3n3Ppam7vgaVa1iaRUc9Lp">Musik 2 - Example Song 2</option>
+      <option value="1Qrg8KqiBpW07V7PNxwwwL">Musik 3 - Example Song 3</option>
+    </select>
+  </div>
+
+  <p class="footer">Dibuat dengan cinta dan harapan ❤️</p>
+
+  <script>
+    // Set target date
+    const targetDate = new Date('2024-12-12T00:00:00'); // Tanggal target: 12 Desember 2024
+
+    // Countdown logic
+    function updateCountdown() {
+      const now = new Date();
+      const timeLeft = targetDate - now;
+
+      if (timeLeft <= 0) {
+        document.getElementById('countdown').textContent = "Hari spesial telah tiba! 🎉";
+        return;
+      }
+
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+      document.getElementById('countdown').textContent =
+        `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Change Spotify music based on selection
+    function changeMusic() {
+      const spotifyFrame = document.getElementById('spotifyFrame');
+      const musicSelector = document.getElementById('musicSelector');
+      const selectedTrack = musicSelector.value;
+
+      spotifyFrame.src = `https://open.spotify.com/embed/track/${selectedTrack}`;
+    }
+  </script>
+
+</body>
+</html>
