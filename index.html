@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun!</title>
+    <style>
+        /* Style Dasar */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #fce4ec, #ffb3c6);
+            color: #fff;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        header {
+            background-color: rgba(233, 30, 99, 0.9);
+            padding: 20px;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        nav a {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 25px;
+            background-color: #ff4081;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #d81b60;
+            transform: scale(1.1);
+        }
+
+        h1 {
+            margin-top: 20px;
+            font-size: 2.5rem;
+            animation: fadeInDown 2s ease-out;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin: 20px;
+        }
+
+        /* Efek Animasi */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Efek Confetti */
+        .confetti {
+            position: fixed;
+            top: -10px;
+            left: 50%;
+            width: 15px;
+            height: 15px;
+            background-color: #fff;
+            opacity: 0.8;
+            animation: fall 3s infinite linear;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateX(0) translateY(0) rotate(0);
+            }
+            100% {
+                transform: translateX(200px) translateY(800px) rotate(360deg);
+            }
+        }
+
+        /* Popup */
+        #popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #ffffffdd;
+            color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        #popup button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #e91e63;
+            color: white;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Musik Latar -->
+    <audio autoplay loop>
+        <source src="romantic-music.mp3" type="audio/mpeg">
+        Browser tidak mendukung audio.
+    </audio>
+
+    <!-- Header -->
+    <header>
+        <h1>Selamat Ulang Tahun, Sayang! 🎉</h1>
+    </header>
+
+    <!-- Navigasi -->
+    <nav>
+        <a href="kenangan.html">Kenangan Kita</a>
+        <a href="kartu.html">Kartu Ucapan</a>
+        <a href="game.html">Game Tebak Kata</a>
+    </nav>
+
+    <!-- Pesan Spesial -->
+    <p>Klik tombol di bawah untuk pesan spesial dariku!</p>
+    <button onclick="showPopup()">Lihat Pesan</button>
+
+    <!-- Popup -->
+    <div id="popup">
+        <h2>Untukmu, Sayang</h2>
+        <p>Terima kasih telah menjadi bagian penting dalam hidupku. Aku berharap kamu selalu bahagia dan sehat. Selamat ulang tahun! Aku mencintaimu 💖</p>
+        <button onclick="closePopup()">Tutup</button>
+    </div>
+
+    <!-- Efek Confetti -->
+    <div class="confetti" style="animation-delay: 0s;"></div>
+    <div class="confetti" style="animation-delay: 0.5s; left: 30%;"></div>
+    <div class="confetti" style="animation-delay: 1s; left: 70%;"></div>
+
+    <script>
+        // Fungsi untuk menampilkan popup
+        function showPopup() {
+            document.getElementById("popup").style.display = "block";
+        }
+
+        // Fungsi untuk menutup popup
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+
+        // Buat confetti dinamis
+        const body = document.body;
+        for (let i = 0; i < 50; i++) {
+            const confetti = document.createElement("div");
+            confetti.className = "confetti";
+            confetti.style.left = Math.random() * 100 + "%";
+            confetti.style.animationDelay = Math.random() * 3 + "s";
+            body.appendChild(confetti);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kenangan Kita</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fbeaff;
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        header {
+            background-color: rgba(233, 30, 99, 0.9);
+            padding: 20px;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .timeline {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin: 20px auto;
+            max-width: 800px;
+            text-align: left;
+        }
+
+        .timeline p {
+            font-size: 1.2rem;
+        }
+
+        .timeline img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-top: 20px;
+            color: #ff4081;
+        }
+
+        /* Confetti Effect */
+        .confetti {
+            position: fixed;
+            top: -10px;
+            left: 50%;
+            width: 15px;
+            height: 15px;
+            background-color: #fff;
+            opacity: 0.8;
+            animation: fall 3s infinite linear;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateX(0) translateY(0) rotate(0);
+            }
+            100% {
+                transform: translateX(200px) translateY(800px) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Musik Latar -->
+    <audio autoplay loop>
+        <source src="romantic-music.mp3" type="audio/mpeg">
+        Browser tidak mendukung audio.
+    </audio>
+
+    <!-- Header -->
+    <header>
+        <h1>Kenangan Kita</h1>
+    </header>
+
+    <!-- Kenangan Timeline -->
+    <div class="timeline">
+        <h2>Pertama Kali Bertemu</h2>
+        <p>Hari itu, kita bertemu di [lokasi]. Aku tak menyangka kita bisa berkenalan, dan sejak saat itu hidupku lebih indah.</p>
+        <img src="kenangan1.jpg" alt="Kenangan Pertama Bertemu">
+
+        <h2>Jadian</h2>
+        <p>Di [tanggal], kita akhirnya jadi pasangan. Itu adalah salah satu keputusan terbaik dalam hidupku.</p>
+        <img src="kenangan2.jpg" alt="Kenangan Jadian">
+
+        <h2>Kenangan Manis Lainnya</h2>
+        <p>[Isi kenangan spesial kalian]</p>
+        <img src="kenangan3.jpg" alt="Kenangan Manis Lainnya">
+    </div>
+
+    <!-- Efek Confetti -->
+    <div class="confetti" style="animation-delay: 0s;"></div>
+    <div class="confetti" style="animation-delay: 1s; left: 25%;"></div>
+    <div class="confetti" style="animation-delay: 2s; left: 75%;"></div>
+
+    <script>
+        // Buat confetti dinamis
+        const body = document.body;
+        for (let i = 0; i < 50; i++) {
+            const confetti = document.createElement("div");
+            confetti.className = "confetti";
+            confetti.style.left = Math.random() * 100 + "%";
+            confetti.style.animationDelay = Math.random() * 3 + "s";
+            body.appendChild(confetti);
+        }
+    </script>
+</body>
+</html>

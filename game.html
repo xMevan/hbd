@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Tebak Kata</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fce4ec;
+            text-align: center;
+            color: #fff;
+            background-image: url('background-romantic.jpg');
+            background-size: cover;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-top: 50px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin-top: 20px;
+        }
+
+        input, button {
+            padding: 10px;
+            font-size: 1rem;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
+
+        /* Efek Confetti */
+        .confetti {
+            position: fixed;
+            top: -10px;
+            left: 50%;
+            width: 15px;
+            height: 15px;
+            background-color: #fff;
+            opacity: 0.8;
+            animation: fall 3s infinite linear;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateX(0) translateY(0) rotate(0);
+            }
+            100% {
+                transform: translateX(200px) translateY(800px) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Musik Latar -->
+    <audio autoplay loop>
+        <source src="romantic-music.mp3" type="audio/mpeg">
+        Browser tidak mendukung audio.
+    </audio>
+
+    <h1>Tebak Kata untukku!</h1>
+    <p>Masukkan kata yang berhubungan dengan kita!</p>
+    <input type="text" id="wordInput" placeholder="Tebak Kata" />
+    <button onclick="checkAnswer()">Kirim</button>
+
+    <div class="result" id="result"></div>
+
+    <!-- Efek Confetti -->
+    <div class="confetti" style="animation-delay: 0s;"></div>
+    <div class="confetti" style="animation-delay: 1s; left: 30%;"></div>
+    <div class="confetti" style="animation-delay: 2s; left: 70%;"></div>
+
+    <script>
+        const correctAnswer = "cinta"; // Ubah dengan kata yang kalian inginkan
+
+        function checkAnswer() {
+            const userAnswer = document.getElementById("wordInput").value.trim().toLowerCase();
+            const resultElement = document.getElementById("result");
+            if (userAnswer === correctAnswer) {
+                resultElement.innerHTML = "Selamat! Kamu benar! 🎉";
+            } else {
+                resultElement.innerHTML = "Ups, coba lagi!";
+            }
+        }
+    </script>
+</body>
+</html>
